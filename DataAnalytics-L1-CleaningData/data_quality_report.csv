@@ -1,0 +1,9 @@
+Column,Missing Values,Data Type,Unique Values
+Transaction ID,0,str,10000
+Item,333,str,10
+Quantity,138,str,7
+Price Per Unit,179,str,8
+Total Spent,173,str,19
+Payment Method,2579,str,5
+Location,3265,str,4
+Transaction Date,159,str,367
