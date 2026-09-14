@@ -1,4 +1,5 @@
 import pandas as pd 
+import seaborn as sns
 
 df = pd.read_csv("retail_sales_dataset.csv")
 
@@ -39,7 +40,7 @@ plt.figure(figsize=(7, 5))
 plt.bar(gender_counts.index, gender_counts.values)
 plt.xlabel("Gender")
 plt.ylabel("Number of Customers")
-plt.title("Customer istribution by Gender")
+plt.title("Customer Distribution by Gender")
 plt.tight_layout()
 plt.show()
 
@@ -63,6 +64,39 @@ plt.ylabel("Total Sales")
 plt.title("Sales by Product Category")
 plt.tight_layout()
 plt.show()
+
+# --------------------------------
+# Correlation Heatmap
+# --------------------------------
+
+plt.figure(figsize=(8, 6))
+
+numeric_data = df.select_dtypes(include="number")
+
+sns.heatmap(numeric_data.corr(), annot=True, cmap="coolwarm", fmt=".2f")
+
+plt.title("Correlation Heatmap")
+plt.tight_layout()
+plt.show()
+
+# --------------------------------
+# Additional Visualization
+# Sales by Gender
+# --------------------------------
+
+gender_sales = df.groupby("Gender")["Total Amount"].sum()
+
+plt.figure(figsize=(8, 5))
+
+plt.bar(gender_sales.index, gender_sales.values)
+
+plt.xlabel("Gender")
+plt.ylabel("Total Sales")
+plt.title("Sales by Gender")
+
+plt.tight_layout()
+plt.show()
+
 
 # -------------------------------
 # Final Analysis / Key Insights
